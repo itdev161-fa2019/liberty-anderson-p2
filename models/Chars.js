@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import {races, classes, alignments, backgrounds} from './values.js';
 
 const CharSchema = new mongoose.Schema({
     name: {
@@ -6,29 +7,26 @@ const CharSchema = new mongoose.Schema({
         required: true
     },
     race: {
-        type: String,
-        required: true,
+        type: [String],
         //TODO, consider separating subraces
-        enum: [dwarf, elf, halfling, human, dragonborn, gnome, half-elf, half-orc, tiefling]
+        enum: races,
+        required: true
     },
     class: {
-        type: String,
-        required: true,
-        enum: [barbarian, bard, cleric, druid, fighter, monk, paladin, 
-            ranger, rogue, sorcerer, warlock, wizard]
+        type: [String],
+        enum: classes,
+        required: true
+
     },
     alignment: {
-        type: String,
-        required: true,
-        enum: ["lawful good", "lawful neutral", "lawful evil",
-                "neutral good", "true neutral",  "neutral evil", 
-                "chaotic good", "chaotic neutral",  "chaotic evil" ]
+        type: [String],
+        enum: alignments,
+        required: true
     },
     background: {
-        type: String,
-        required: true,
-        enum: [acolyte, charlatan, criminal, entertainer, "folk hero", 
-        "guild artisan", hermit, noble, outlander, sage, sailor, soldier, urchin]
+        type: [String],
+        enum: backgrounds,
+        required: true
     }
 });
 
