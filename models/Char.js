@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import {races, classes, alignments, backgrounds} from './values.js';
+import {races, classes, alignments, backgrounds} from '../values.js';
 
 const CharSchema = new mongoose.Schema({
     name: {

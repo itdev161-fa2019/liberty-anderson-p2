@@ -49,7 +49,7 @@ app.post('/api/chars',
     check('background','Please enter the character\'s background').not().isEmpty(),
     check('background', 'Please enter a valid background').isIn(backgrounds)
 ],
-(req, res) => {
+async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
