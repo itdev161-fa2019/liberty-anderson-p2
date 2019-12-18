@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
+import Create from './components/Create'
 
 class App extends React.Component {
 	state = {
@@ -40,9 +41,7 @@ class App extends React.Component {
 							{this.state.data}
 						</Route>
 						<Switch>
-							<Route path="/create">
-								Create Character
-							</Route>
+							<Route exact path="/create" component={Create}/>
 						</Switch>
 					</main>
 				</div>
