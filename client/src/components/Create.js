@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import './styles.css'
 
-const Create = () => {
+const Create = ({ onCharCreated }) => {
+	let history = useHistory();
 	const [charData, setCharData] = useState({
 		name: '',
 		race: '',
@@ -37,11 +40,13 @@ const Create = () => {
 					headers: {
 						'Content-Type': 'application/json'
 					}
-				}
+				};
 
 				const body = JSON.stringify(newChar);
 				const res = await axios.post('http://localhost:5000/api/chars', body, config);
-				console.log(res.data);
+
+				onCharCreated(res.data);
+				history.push('/');
 			} catch (error) {
 				console.error(`Error adding character: ${error.response.data}`);
 			}
@@ -51,36 +56,31 @@ const Create = () => {
 	return (
 		<div className="form-container">
 			<h2>Create Character</h2>
-				<input
+			Name: <input
+				type="text"
+				name="name"
+				value={name} 
+				onChange={e => onChange(e)} /><br></br>
+			Race: <input
 					type="text"
-					placeholder="Name"
-					name="name"
-					value={name} 
-					onChange={e => onChange(e)} />
-			<input
-					type="text"
-					placeholder="Race"
 					name="race"
 					value={race} 
-					onChange={e => onChange(e)} />
-			<input
+					onChange={e => onChange(e)} /><br></br>
+			Class: <input
 					type="text"
-					placeholder="Class"
 					name="cClass"
 					value={cClass} 
-					onChange={e => onChange(e)} />
-			<input
+					onChange={e => onChange(e)} /><br></br>
+			Alignment: <input
 					type="text"
-					placeholder="Alignment"
 					name="alignment"
 					value={alignment} 
-					onChange={e => onChange(e)} />
-			<input
+					onChange={e => onChange(e)} /><br></br>
+			Background: <input
 					type="text"
-					placeholder="Background"
 					name="background"
 					value={background} 
-					onChange={e => onChange(e)} />
+					onChange={e => onChange(e)} /> <br></br>
 			<button onClick={() => create()}>Create</button>
 		</div>
 	)

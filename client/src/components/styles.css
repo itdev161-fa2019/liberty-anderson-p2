@@ -1,0 +1,26 @@
+.form-container {
+	display: inline;
+	justify-content: center;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.form-container input {
+	width: 20em;
+	margin: 0.4em
+}
+
+.charListItem ul {
+	list-style-type: none;
+	text-align: left;
+}
+
+.charListItem ul li {
+	margin: 0.3em 0;
+}
+
+.charList {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}

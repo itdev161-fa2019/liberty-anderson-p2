@@ -22,12 +22,19 @@ app.use(
 
 // api endpoints
 /**
- * @route GET /
- * @desc Test endpoint
+ * @route GET api/chars
+ * @desc get characters
  */
-app.get('/', (req, res) =>
-    res.send('http get request sent to root api endpoint')
-);
+app.get('/api/chars', async (req, res) =>{
+	try {
+		const chars = await Character.find();
+
+		res.json(chars);
+	} catch (error) {
+		console.error(error);
+		res.status(500).send('Server error');
+	}
+});
 
 /**
  * @route POST api/chars
@@ -50,6 +57,7 @@ app.post('/api/chars',
 		if (!errors.isEmpty()) {
 			return res.status(422).json({ errors: errors.array() });
 		} else {
+			const { name, race, cClass, alignment, background } = req.body;
 			try {
 
 				const newChar = new Character({
@@ -61,9 +69,9 @@ app.post('/api/chars',
 				});
 
 				//save to db
-				await post.save();
+				await newChar.save();
 
-				res.json(post);
+				res.json(newChar);
 			} catch (error) {
 				console.error(error);
 				res.status(500).send('Server error');

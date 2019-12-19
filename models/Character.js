@@ -7,23 +7,23 @@ const CharSchema = new mongoose.Schema({
 		required: true
 	},
 	race: {
-		type: [String],
+		type: String,
 		//TODO, consider separating subraces
 		enum: races,
 		required: true
 	},
 	cClass: {
-		type: [String],
+		type: String,
 		enum: classes,
 		required: true
 	},
 	alignment: {
-		type: [String],
+		type: String,
 		enum: alignments,
 		required: true
 	},
 	background: {
-		type: [String],
+		type: String,
 		enum: backgrounds
 	}
 });

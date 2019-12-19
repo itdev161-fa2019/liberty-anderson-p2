@@ -9,16 +9,20 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(5px + 2vmin);
 	color: white;
 	padding-left: 30px;
+}
+
+.App-header nav {
+	width: 100%;
 }
 
 .App-header ul {
 	list-style-type: none;
 	flex: 1;
 	text-align: right;
-	padding-right: 30px;
+	padding-right: 35px;
 }
 
 .App-header ul li {
